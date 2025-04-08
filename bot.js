@@ -1,8 +1,10 @@
 const { Telegraf } = require('telegraf');
-const { TELEGRAM_BOT_TOKEN } = require('./src/config/telegram');
+
+// Токен telegram бота
+const TELEGRAM_BOT_TOKEN = '7851288541:AAHO9PsqhudonjZWekH7gZq-nrgOgLy2Jmo';
 
 // URL для GitHub Pages
-const WEBAPP_URL = 'https://artemulitin.github.io/miniapp';
+const WEBAPP_URL = 'https://artem123213432.github.io/miniapp';
 
 const bot = new Telegraf(TELEGRAM_BOT_TOKEN);
 
