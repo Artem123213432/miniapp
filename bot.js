@@ -3,8 +3,9 @@ const { Telegraf } = require('telegraf');
 // Токен telegram бота
 const TELEGRAM_BOT_TOKEN = '7851288541:AAHO9PsqhudonjZWekH7gZq-nrgOgLy2Jmo';
 
-// URL для GitHub Pages
-const WEBAPP_URL = 'https://artem123213432.github.io/miniapp';
+// URL для GitHub Pages с параметром для сброса кэша
+const version = Date.now(); // Текущее время для генерации уникального параметра
+const WEBAPP_URL = `https://artem123213432.github.io/miniapp/?v=${version}`;
 
 const bot = new Telegraf(TELEGRAM_BOT_TOKEN);
 
@@ -18,8 +19,8 @@ bot.command('start', (ctx) => {
       reply_markup: {
         keyboard: [
           [{ text: '💰 Кошелек', web_app: { url: WEBAPP_URL } }],
-          [{ text: '🔄 Биржа', web_app: { url: `${WEBAPP_URL}/exchange` } }],
-          [{ text: '👤 Профиль', web_app: { url: `${WEBAPP_URL}/profile` } }]
+          [{ text: '🔄 Биржа', web_app: { url: `${WEBAPP_URL}#/exchange` } }],
+          [{ text: '👤 Профиль', web_app: { url: `${WEBAPP_URL}#/profile` } }]
         ],
         resize_keyboard: true
       }
@@ -35,11 +36,11 @@ bot.on('text', (ctx) => {
     });
   } else if (ctx.message.text === '🔄 Биржа') {
     ctx.reply('Открываю биржу...', {
-      web_app: { url: `${WEBAPP_URL}/exchange` }
+      web_app: { url: `${WEBAPP_URL}#/exchange` }
     });
   } else if (ctx.message.text === '👤 Профиль') {
     ctx.reply('Открываю профиль...', {
-      web_app: { url: `${WEBAPP_URL}/profile` }
+      web_app: { url: `${WEBAPP_URL}#/profile` }
     });
   }
 });
